@@ -1,6 +1,4 @@
 #!/bin/sh
- 
-#### Debian 8### Debian 8### Debian 8### Debian 8### Debian 8### Debian 8###
 
 ## Set environment paths
 export PATH=$PATH:/usr/local/go/bin
