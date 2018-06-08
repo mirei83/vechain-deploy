@@ -27,6 +27,7 @@ Add the following line bevor "exit 0" in /etc/rc.local
 "/PATH/TO/vechain-testnet.sh"
 
 4.) enable API form outside
+------------------------
 change "vechain-testnet.sh" to
 ```shell
 /root/go/src/VeChain/thor/bin/thor -network test --api-addr YOUR.IP.ADD.RESS:8669
