@@ -1,15 +1,13 @@
 #!/bin/sh
-
  
 #### Debian 8### Debian 8### Debian 8### Debian 8### Debian 8### Debian 8###
 
 ## Set environment paths
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
-
 mkdir -p $GOPATH/src
 
-
+### Update System and install dependencies
 apt-get update
 apt-get -y install build-essential libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev git
 
@@ -33,3 +31,10 @@ git clone https://github.com/vechain/thor.git $GOPATH/src/VeChain/thor
 cd $GOPATH/src/VeChain/thor
 dep ensure
 make all
+
+### Create StartUp-Scrip
+cd ~
+echo '#!/bin/bash' >> ./vechain-testnet.sh
+echo "cd"  >> ./vechain-testnet.sh
+echo "$GOPATH/src/VeChain/thor/bin/thor -network test" >> ./vechain-testnet.sh
+chmod +x ./vechain-testnet.sh
