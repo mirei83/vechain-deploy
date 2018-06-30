@@ -20,7 +20,7 @@ curl -sSL https://raw.githubusercontent.com/mirei83/vechain-deploy/master/Vechai
 In Debian:
 Add the following line bevor "exit 0" in /etc/rc.local
 ```shell
-"/PATH/TO/vechain-testnet.sh"
+"/PATH/TO/start-vechain-thor.sh"
 ```
 
 In Ubuntu:
