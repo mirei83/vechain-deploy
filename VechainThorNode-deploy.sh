@@ -47,7 +47,7 @@ echo "Installing VeChain"
 echo "########################"
 git clone https://github.com/vechain/thor.git $GOPATH/src/VeChain/thor
 cd $GOPATH/src/VeChain/thor
-dep ensure
+make dep
 make all
 
 ### Create StartUp-Scrip
