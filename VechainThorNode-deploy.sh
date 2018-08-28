@@ -13,8 +13,8 @@
 ## Set environment paths
 cd ~
 touch ${HOME}/.profile
-echo "PATH=$PATH:/usr/local/go/bin" >> ${HOME}/.profile
-echo "GOPATH=$HOME/go" >> ${HOME}/.profile
+echo "export PATH=$PATH:/usr/local/go/bin" >> ${HOME}/.profile
+echo "export GOPATH=$HOME/go" >> ${HOME}/.profile
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
