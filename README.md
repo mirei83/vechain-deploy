@@ -54,7 +54,7 @@ curl -sSL https://raw.githubusercontent.com/mirei83/vechain-deploy/master/VeChai
 $GOPATH/src/VeChain/thor/bin/thor -network main
 ```
 
-5b.) Start Web3-Gear with
+5b.) Start Web3-Gear
 ------------------------
 ```shell
 web3-gear --host 0.0.0.0 
@@ -71,12 +71,12 @@ web3-gear --host 0.0.0.0
 
  VTHOR Total Supply
 ```shell
-curl -X POST  http://YOUR.IP.GOES.HERE:8545 -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","id":1,"method":"eth_call","params":[{"from":"0x7567d83b7b8d80addcb281a71d54fc7b3364ffed","to":"0x0000000000000000000000000000456E65726779","data":"0x18160ddd","value":"0x0","gas":"0x2dc6c0"},"latest"]}' | json_pp
+curl -X POST  http://YOUR.IP.GOES.HERE:8545 -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","id":1,"method":"eth_call","params":[{"from":"0xa4aDAfAef9Ec07BC4Dc6De146934C7119341eE25","to":"0x0000000000000000000000000000456E65726779","data":"0x18160ddd","value":"0x0","gas":"0x2dc6c0"},"latest"]}' | json_pp
 ```
 
 VTHOR Burned
 ```shell
-curl -X POST  http://YOUR.IP.GOES.HERE:8545 -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","id":1,"method":"eth_call","params":[{"from":"0x7567d83b7b8d80addcb281a71d54fc7b3364ffed","to":"0x0000000000000000000000000000456E65726779","data":"0xd89135cd","value":"0x0","gas":"0x2dc6c0"},"latest"]}' | json_pp
+curl -X POST  http://YOUR.IP.GOES.HERE:8545 -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","id":1,"method":"eth_call","params":[{"from":"0xa4aDAfAef9Ec07BC4Dc6De146934C7119341eE25","to":"0x0000000000000000000000000000456E65726779","data":"0xd89135cd","value":"0x0","gas":"0x2dc6c0"},"latest"]}' | json_pp
 ```
 
 VTHOR von Binance Adresse abfragen
