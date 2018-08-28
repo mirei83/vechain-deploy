@@ -40,19 +40,7 @@ change "start-vechain-thor.sh" to
 /root/go/src/VeChain/thor/bin/thor -network main --api-addr 0.0.0.0:8669
 ```
 
-4a.) Start Node (in Background)
-------------------------
-```shell
-./start-vechain-thor.sh
-```
-
-4b.) Start Node
-------------------------
-```shell
-$GOPATH/src/VeChain/thor/bin/thor -network main
-```
-
-5.) Install Web3-Gear
+4.) Install Web3-Gear
 ------------------------
 As with the first script, simply execute every single step in "VeChain_Web3_deploy.sh" or just do a:
 
@@ -60,14 +48,25 @@ As with the first script, simply execute every single step in "VeChain_Web3_depl
 curl -sSL https://raw.githubusercontent.com/mirei83/vechain-deploy/master/VeChain_Web3_deploy.sh | bash
 ```
 
-6.) Start Web3-Gear with
+5a.) Start Node
+------------------------
+```shell
+$GOPATH/src/VeChain/thor/bin/thor -network main
+```
+
+5b.) Start Web3-Gear with
 ------------------------
 ```shell
 web3-gear --host 0.0.0.0 
 ```
 
+5c.) Start Node + Web3-Gear in Background
+------------------------
+```shell
+./start-vechain-thor.sh
+```
 
-7.) After that, you can do some queries with curl
+6.) After that, you can do some queries with curl
 ------------------------
 
  VTHOR Total Supply
