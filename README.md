@@ -1,11 +1,11 @@
 Quick Installscript for VeChain Thor Node and Web3-Gear
 ==================
 
-All Test are done on Vultr. Register if you want and power up a VPS: https://www.vultr.com/?ref=7097618
+All Tests are done on Vultr. Register if you want to and power up a VPS: https://www.vultr.com/?ref=7097618
 
-This is just a simple installscript for a Vechain Thor Node - mainly for myself. Feel free to fork it or just use smiplets of it. Do not use this for Mainnet Nodes without checking for additional security!
+This is just a simple installscript for a Vechain Thor Node - mainly for myself. Feel free to fork it or just use sniplets of it. Do not use this for Mainnet Nodes without checking for additional security!
 
-I now added a script to install the Web3-Gear to query more accounts and contracts on the blockchain.
+I now added a script to install the Web3-Gear to query more accounts and contracts on the vechain blockchain.
 
 
 
