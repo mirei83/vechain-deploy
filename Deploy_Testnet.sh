@@ -1,6 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 ## Set environment paths
+cd ~
+touch ${HOME}/.profile
+echo "PATH=$PATH:/usr/local/go/bin" >> ${HOME}/.profile
+echo "GOPATH=$HOME/go" >> ${HOME}/.profile
+
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 mkdir -p $GOPATH/src
@@ -26,7 +31,7 @@ echo "########################"
 echo "Installing dep"
 echo "########################"
 cd /usr/local/bin/
-wget https://github.com/golang/dep/releases/download/v0.3.2/dep-linux-amd64
+wget https://github.com/golang/dep/releases/download/v0.5.0/dep-linux-amd64
 ln -s dep-linux-amd64 dep
 chmod +x /usr/local/bin/*
 

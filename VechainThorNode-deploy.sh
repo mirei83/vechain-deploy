@@ -1,16 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 
 
 ### Supported OS: Ubuntu 16.04/17.10/18.04 64bit + Debian 8/9
 
-## activate Swap
-echo "########################"
-echo "Activating Swap"
-echo "########################"
-dd if=/dev/zero of=/mnt/myswap.swap bs=1M count=2000 &&  mkswap /mnt/myswap.swap &&  swapon /mnt/myswap.swap
-echo "/mnt/swap.img    none    swap    sw    0    0" >> /etc/fstab
+## OPTIONAL - activate Swap
+## echo "########################"
+## echo "Activating Swap"
+## echo "########################"
+## dd if=/dev/zero of=/mnt/myswap.swap bs=1M count=2000 &&  mkswap /mnt/myswap.swap &&  swapon /mnt/myswap.swap
+## echo "/mnt/swap.img    none    swap    sw    0    0" >> /etc/fstab
 
 ## Set environment paths
+cd ~
+touch ${HOME}/.profile
+echo "PATH=$PATH:/usr/local/go/bin" >> ${HOME}/.profile
+echo "GOPATH=$HOME/go" >> ${HOME}/.profile
+
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 mkdir -p $GOPATH/src
@@ -19,6 +24,9 @@ mkdir -p $GOPATH/src
 apt-get update
 apt-get -y install build-essential libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev git
 
+### OPTIONAL - VIM Visual Mode off
+## touch ${HOME}/.vimrc
+## echo "set mouse-=a" >> ${HOME}/.vimrc
 
 ### Install go
 echo "########################"
@@ -47,7 +55,7 @@ echo "Installing VeChain"
 echo "########################"
 git clone https://github.com/vechain/thor.git $GOPATH/src/VeChain/thor
 cd $GOPATH/src/VeChain/thor
-dep ensure
+make dep
 make all
 
 ### Create StartUp-Scrip

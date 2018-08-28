@@ -3,7 +3,7 @@ Quick Installscript for VeChain Thor Node
 
 All Test are done on Vultr. Register if you want and power up a VPS: https://www.vultr.com/?ref=7097618
 
-This is just a simple installscript for a Vechain Thor Node. Do not use this for Mainnet Nodes without checking for additional security!
+This is just a simple installscript for a Vechain Thor Node - mainly for myself. Feel free to fork it or just use smiplets of it. Do not use this for Mainnet Nodes without checking for additional security!
 
 
 
