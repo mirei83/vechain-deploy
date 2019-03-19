@@ -30,21 +30,21 @@ apt-get -y install build-essential libgflags-dev libsnappy-dev zlib1g-dev libbz2
 
 ### Install go
 echo "########################"
-echo "Installing go"
+echo "Installing go 1.12.1"
 echo "########################"
 cd ~
-wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
-tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.12.1.linux-amd64.tar.gz
 chmod +x /usr/local/go/bin/go
-rm go1.10.3.linux-amd64.tar.gz
+rm go1.12.1.linux-amd64.tar.gz
 
 
 ### Install dep
 echo "########################"
-echo "Installing dep"
+echo "Installing dep 0.5.1"
 echo "########################"
 cd /usr/local/bin/
-wget https://github.com/golang/dep/releases/download/v0.3.2/dep-linux-amd64
+wget https://github.com/golang/dep/releases/download/v0.5.1/dep-linux-amd64
 ln -s dep-linux-amd64 dep
 chmod +x /usr/local/bin/*
 
@@ -65,7 +65,7 @@ echo "########################"
 cd ~
 echo '#!/bin/bash' >> ./start-vechain-thor.sh
 echo "cd"  >> ./start-vechain-thor.sh
-echo "$GOPATH/src/VeChain/thor/bin/thor -network main  > /dev/null 2>&1 &" >> ./start-vechain-thor.sh
+echo "$GOPATH/src/VeChain/thor/bin/thor -network test  > /dev/null 2>&1 &" >> ./start-vechain-thor.sh
 chmod +x ./start-vechain-thor.sh
 
 
@@ -78,6 +78,6 @@ echo "######################################################"
 
 echo "######################################################"
 echo "######################################################"
-echo "To activate Node on startup on Debian, add the following line bevor "exit 0" in /etc/rc.local"
+echo "To activate Node on startup on Debian, add the following line before "exit 0" in /etc/rc.local"
 echo "/PATH/TO/start-vechain-thor.sh"
 echo "######################################################"
