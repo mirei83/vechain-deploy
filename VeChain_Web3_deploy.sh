@@ -10,19 +10,23 @@ export LANG=C.UTF-8
 
 ### Install NodeJS
 cd ~
-curl -sL https://deb.nodesource.com/setup_10.x | bash -
+curl -sL https://deb.nodesource.com/setup_11.x | bash -
 apt-get install -y nodejs
 
 
-## Install Python3.6
-echo "deb http://ftp.de.debian.org/debian testing main" >> /etc/apt/sources.list
-echo 'APT::Default-Release "stable";' | tee -a /etc/apt/apt.conf.d/00local
-apt-get update
-apt-get -t testing install  --yes --force-yes python3.6 python3-pip libssl-dev
-update-alternatives --install /usr/bin/python python /usr/bin/python3.6 50
+## Build and Install Python3.7
+apt-get install -y checkinstall
+apt-get install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev
+cd /usr/src
+wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
+tar xzf Python-3.7.2.tgz
+cd Python-3.7.2
+./configure --enable-optimizations
+make altinstall
+
 
 ### Install Web3-Gear
-pip3 install web3-gear
+python3.7 -m pip install web3-gear
 
 ### Create StartUp-Scrip
 echo "########################"
