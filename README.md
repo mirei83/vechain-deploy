@@ -1,20 +1,19 @@
 Quick Installscript for VeChain Thor Node and Web3-Gear
 ==================
 
-All Tests are done on Vultr. Register if you want to and power up a VPS: https://www.vultr.com/?ref=7097618
+This is an updated fork of Mirei83's scripts which can be found here: https://github.com/mirei83/vechain-deploy
 
-This is just a simple installscript for a Vechain Thor Node - mainly for myself. Feel free to fork it or just use sniplets of it. Do not use this for Mainnet Nodes without checking for additional security!
+This is just a simple installscript for a Vechain Thor Node - mainly for myself. Feel free to fork it or just use sniplets of it. 
+Do not use this for Mainnet Nodes without checking for additional security!
 
 I now added a script to install the Web3-Gear to query more accounts and contracts on the vechain blockchain.
-
-
 
 1.)  Install VeChain Thor Node
 ------------------------
 This Script is tested on Debian 8/9 64bit and Ubuntu 16.04/17.10/18.04 64bit. You can go to the script step-by-step or just execute this from shell:
 
 ```shell
-curl -sSL https://raw.githubusercontent.com/mirei83/vechain-deploy/master/VechainThorNode-deploy.sh | bash
+curl -sSL https://raw.githubusercontent.com/J-Meyer42/vechain-deploy/master/VechainThorNode-deploy.sh | bash
 ```
 
 2.) Make it AutoStart (optional)
@@ -33,11 +32,11 @@ Add this to your crontab
 
 
 
-3.) enable API form outside (optional)
+3.) enable external API access (optional)
 ------------------------
 change "start-vechain-thor.sh" to
 ```shell
-/root/go/src/VeChain/thor/bin/thor -network main --api-addr 0.0.0.0:8669
+/root/go/src/VeChain/thor/bin/thor -network test --api-addr 0.0.0.0:8669
 ```
 
 4.) Install Web3-Gear
@@ -45,13 +44,13 @@ change "start-vechain-thor.sh" to
 As with the first script, simply execute every single step in "VeChain_Web3_deploy.sh" or just do a:
 
 ```shell
-curl -sSL https://raw.githubusercontent.com/mirei83/vechain-deploy/master/VeChain_Web3_deploy.sh | bash
+curl -sSL https://raw.githubusercontent.com/J-Meyer42/vechain-deploy/master/VeChain_Web3_deploy.sh | bash
 ```
 
 5a.) Start Node
 ------------------------
 ```shell
-$GOPATH/src/VeChain/thor/bin/thor -network main
+$GOPATH/src/VeChain/thor/bin/thor -network test
 ```
 
 5b.) Start Web3-Gear
