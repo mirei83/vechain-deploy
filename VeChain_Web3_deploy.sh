@@ -16,7 +16,8 @@ apt-get install -y nodejs
 
 ## Build and Install Python3.7
 apt-get install -y checkinstall
-apt-get install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev
+##The following dependencies are sourced from: https://bugs.python.org/issue31652 
+apt-get install -y libsqlite3-dev sqlite3 bzip2 libbz2-dev zlib1g-dev libssl-dev openssl libgdbm-dev liblzma-dev libreadline-dev libncursesw5-dev libffi-dev uuid-dev
 cd /usr/src
 wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
 tar xzf Python-3.7.2.tgz
