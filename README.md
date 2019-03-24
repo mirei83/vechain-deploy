@@ -3,10 +3,11 @@ Quick Installscript for VeChain Thor Node and Web3-Gear
 
 This is an updated fork of Mirei83's scripts which can be found here: https://github.com/mirei83/vechain-deploy
 
-This is just a simple installscript for a Vechain Thor Node - mainly for myself. Feel free to fork it or just use sniplets of it. 
-Do not use this for Mainnet Nodes without checking for additional security!
+Updated: Go Version: 1.10.3 -> 1.12.1, DEP Version: v0.3.2 -> v0.5.1, Python 3.6 -> 3.7.2
 
-I now added a script to install the Web3-Gear to query more accounts and contracts on the vechain blockchain.
+This is just a simple installscript for a Vechain Thor Node & Web3-Gear deployment - mainly for myself. Feel free to fork it or just use snippets of it. 
+
+Do not use this for Mainnet Nodes without additional security hardening!
 
 1.)  Install VeChain Thor Node
 ------------------------
