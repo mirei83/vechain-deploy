@@ -33,10 +33,10 @@ echo "########################"
 echo "Installing go"
 echo "########################"
 cd ~
-wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
-tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.12.13.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.12.13.linux-amd64.tar.gz
 chmod +x /usr/local/go/bin/go
-rm go1.10.3.linux-amd64.tar.gz
+rm go1.12.13.linux-amd64.tar.gz
 
 
 ### Install dep
@@ -44,7 +44,7 @@ echo "########################"
 echo "Installing dep"
 echo "########################"
 cd /usr/local/bin/
-wget https://github.com/golang/dep/releases/download/v0.3.2/dep-linux-amd64
+wget https://github.com/golang/dep/releases/download/v0.5.4/dep-linux-amd64
 ln -s dep-linux-amd64 dep
 chmod +x /usr/local/bin/*
 
