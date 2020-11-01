@@ -72,12 +72,10 @@ After=network.targe
 
 [Service]
 Type=simple
-#Restart=always
-#RestartSec=60
+Restart=always
 User=thor-node
 Group=thor-node
 WorkingDirectory=/home/thor-node/
-#ExecStart=/home/thor-node/vechain-thor-mainnet.sh start
 ExecStart=/home/thor-node/go/src/VeChain/thor/bin/thor -network main --api-addr 0.0.0.0:8669 --p2p-port 11235 --data-dir /home/thor-node/.org.vechain.thor
 
 [Install]
