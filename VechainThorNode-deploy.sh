@@ -1,14 +1,37 @@
 #!/bin/bash
 
+### Supported OS: Debian 10
 
-### Supported OS: Ubuntu 16.04/17.10/18.04 64bit + Debian 8/9
+### Update System and install dependencies
+apt-get update
+apt-get -y install build-essential libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev git libcap2-bin
+apt autoremove -y
+apt-get clean
 
-## OPTIONAL - activate Swap
-## echo "########################"
-## echo "Activating Swap"
-## echo "########################"
-## dd if=/dev/zero of=/mnt/myswap.swap bs=1M count=2000 &&  mkswap /mnt/myswap.swap &&  swapon /mnt/myswap.swap
-## echo "/mnt/swap.img    none    swap    sw    0    0" >> /etc/fstab
+### OPTIONAL - VIM Visual Mode off
+## touch ${HOME}/.vimrc && echo "set mouse-=a" >> ${HOME}/.vimrc
+
+### Increase open file limit for all users
+echo 'thor-node soft nproc 16384' >> /etc/security/limits.conf 
+echo 'thor-node hard nproc 16384' >> /etc/security/limits.conf 
+echo 'thor-node soft nofile 16384' >> /etc/security/limits.conf  
+echo 'thor-node hard nofile 16384' >> /etc/security/limits.conf 
+
+#echo "session required /lib/security/pam_limits.so" >> /etc/pam.d/login
+
+### Install go
+echo "########################"
+echo "Installing go"
+echo "########################"
+cd ~
+wget https://golang.org/dl/go1.15.2.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.15.2.linux-amd64.tar.gz
+chmod +x /usr/local/go/bin/go
+rm go1.15.2.linux-amd64.tar.gz
+
+### Create vechain-thor user
+useradd -m -d /home/thor-node -s /bin/bash thor-node
+su - thor-node
 
 ## Set environment paths
 cd ~
@@ -19,34 +42,10 @@ echo "export GOPATH=$HOME/go" >> ${HOME}/.profile
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 mkdir -p $GOPATH/src
-
-### Update System and install dependencies
-apt-get update
-apt-get -y install build-essential libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev git
+source .profile
 
 ### OPTIONAL - VIM Visual Mode off
-## touch ${HOME}/.vimrc
-## echo "set mouse-=a" >> ${HOME}/.vimrc
-
-### Install go
-echo "########################"
-echo "Installing go"
-echo "########################"
-cd ~
-wget https://dl.google.com/go/go1.12.13.linux-amd64.tar.gz
-tar -C /usr/local -xzf go1.12.13.linux-amd64.tar.gz
-chmod +x /usr/local/go/bin/go
-rm go1.12.13.linux-amd64.tar.gz
-
-
-### Install dep
-echo "########################"
-echo "Installing dep"
-echo "########################"
-cd /usr/local/bin/
-wget https://github.com/golang/dep/releases/download/v0.5.4/dep-linux-amd64
-ln -s dep-linux-amd64 dep
-chmod +x /usr/local/bin/*
+#touch ${HOME}/.vimrc && echo "set mouse-=a" >> ${HOME}/.vimrc
 
 
 ### Install VeChain
@@ -58,26 +57,32 @@ cd $GOPATH/src/VeChain/thor
 make dep
 make all
 
-### Create StartUp-Scrip
+exit
+
+
+### Create StartUp autostart
 echo "########################"
-echo "Creating Startup Script"
+echo "Creating Mainnet-Startup Script"
 echo "########################"
-cd ~
-echo '#!/bin/bash' >> ./start-vechain-thor.sh
-echo "cd"  >> ./start-vechain-thor.sh
-echo "$GOPATH/src/VeChain/thor/bin/thor -network main  > /dev/null 2>&1 &" >> ./start-vechain-thor.sh
-chmod +x ./start-vechain-thor.sh
+cat <<EOF >/etc/systemd/system/vechain-thor-mainnet.service
+# Contents of /etc/systemd/system/vechain-thor-mainnet.service
+[Unit]
+Description=VeChain Thor Mainnet Node
+After=network.targe
 
+[Service]
+Type=simple
+#Restart=always
+#RestartSec=60
+User=thor-node
+Group=thor-node
+WorkingDirectory=/home/thor-node/
+#ExecStart=/home/thor-node/vechain-thor-mainnet.sh start
+ExecStart=/home/thor-node/go/src/VeChain/thor/bin/thor -network main --api-addr 0.0.0.0:8669 --p2p-port 11235 --data-dir /home/thor-node/.org.vechain.thor
 
-echo "######################################################"
-echo "######################################################"
-echo "To activate Node on startup on Ubuntu, add this to your crontab"
-echo "@reboot root $HOME/.profile; $HOME/start-vechain-thor.sh"
-echo "######################################################"
-
-
-echo "######################################################"
-echo "######################################################"
-echo "To activate Node on startup on Debian, add the following line bevor "exit 0" in /etc/rc.local"
-echo "/PATH/TO/start-vechain-thor.sh"
-echo "######################################################"
+[Install]
+WantedBy=multi-user.target
+EOF
+chmod +x /etc/systemd/system/vechain-thor-mainnet.service
+systemctl daemon-reload
+systemctl start vechain-thor-mainnet
