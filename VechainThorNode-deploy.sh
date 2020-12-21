@@ -76,6 +76,7 @@ Restart=always
 User=thor-node
 Group=thor-node
 WorkingDirectory=/home/thor-node/
+LimitNOFILE=16384
 ExecStart=/home/thor-node/go/src/VeChain/thor/bin/thor -network main --api-addr 0.0.0.0:8669 --p2p-port 11235 --data-dir /home/thor-node/.org.vechain.thor
 
 [Install]
