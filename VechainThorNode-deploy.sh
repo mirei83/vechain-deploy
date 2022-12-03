@@ -24,10 +24,10 @@ echo "########################"
 echo "Installing go"
 echo "########################"
 cd ~
-wget https://golang.org/dl/go1.18.linux-amd64.tar.gz
-tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz
+wget https://golang.org/dl/go1.19.3.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.19.3.linux-amd64.tar.gz
 chmod +x /usr/local/go/bin/go
-rm go1.18.linux-amd64.tar.gz
+rm go1.19.3.linux-amd64.tar.gz
 
 ### Create vechain-thor user
 useradd -m -d /home/thor-node -s /bin/bash thor-node
